@@ -9,10 +9,12 @@ namespace SimpleEncodeAndDecode
 {
     class Program
     {
+        private static readonly Random Random = new Random();
         static void Main(string[] args)
         {
             const string plaintext = "THISISASECRETMESSAGE";
-            char[] cipher = { 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M' };
+            char[] cipher = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+            cipher = ShuffleCipher(cipher);
 
             var encodedMessage = Encode(plaintext, cipher);
 
@@ -21,6 +23,24 @@ namespace SimpleEncodeAndDecode
             Console.WriteLine($"Plaintext: {plaintext}");
             Console.WriteLine($"Endcoded: \xA0{encodedMessage}");
             Console.WriteLine($"Decoded: \xA0 {decodedMessage}");
+        }
+
+        private static char[] ShuffleCipher(char[] cipher)
+        {
+            char[] shuffled = new char[cipher.Length];
+            List<char> cipherList = new List<char>(cipher);
+            int randomIndex;
+            for (var i = 0; i < cipher.Length; i++)
+            {
+                do
+                {
+                    randomIndex = Random.Next(0, cipherList.Count);
+                } while (cipher[i] == cipherList[randomIndex]);
+
+                shuffled[i] = cipherList[randomIndex];
+                cipherList.RemoveAt(randomIndex);
+            }
+            return shuffled;
         }
 
         private static string Encode(string plaintext, char[] cipher)
