@@ -19,17 +19,17 @@ namespace SimpleEncodeAndDecode
             var decodedMessage = Decoder(encodedMessage, cipher);
 
             Console.WriteLine($"Plaintext: {plaintext}");
-            Console.WriteLine($"Endcoded:  {encodedMessage}");
-            Console.WriteLine($"Decoded:  {decodedMessage}");
+            Console.WriteLine($"Endcoded: \xA0{encodedMessage}");
+            Console.WriteLine($"Decoded: \xA0 {decodedMessage}");
         }
 
         private static string Encode(string plaintext, char[] cipher)
         {
-            string encodedMessage = string.Empty;
+            var encodedMessage = string.Empty;
             for (var i = 0; i < plaintext.Length; i++)
             {
                 var c = plaintext[i];
-                int cipherIndex = c - 'A';
+                var cipherIndex = c - 'A';
                 encodedMessage += cipher[cipherIndex];
             }
             return encodedMessage;
@@ -37,12 +37,10 @@ namespace SimpleEncodeAndDecode
 
         private static string Decoder(string encodedMessage, char[] cipher)
         {
-            //Finn c sin index i cipher
-            //Bruk index for å finne bokstav (index + 'A')
-            string decodedMessage = string.Empty;
+            var decodedMessage = string.Empty;
             for (var i = 0; i < encodedMessage.Length; i++)
             {
-                int cipherIndex = 0;
+                var cipherIndex = 0;
                 for (var j = 0; j < cipher.Length; j++)
                 {
                     if (encodedMessage[i] == cipher[j])
@@ -51,12 +49,8 @@ namespace SimpleEncodeAndDecode
                     }
                 }
 
-                char c = (char)('A' + cipherIndex);
+                var c = (char)('A' + cipherIndex);
                 decodedMessage += c;
-                //var c = encodedMessage[i];
-                //
-                //int cipherIndex = c + 'A';
-                //decodedMessage += cipher[cipherIndex];
             }
             return decodedMessage;
         }
