@@ -10,7 +10,7 @@ namespace FindModeInArray
     {
         static void Main(string[] args)
         {
-            int[] myArray = {3, 6, 3, 2, 1, 3, 6, 5};
+            int[] myArray = {3, 6, 3, 2, 1, 3, 6, 5, 3, 3, 9};
             Array.Sort(myArray);
 
             int currentStreak = 1;
@@ -33,9 +33,8 @@ namespace FindModeInArray
                 }
             }
 
-            Console.Write(valueOfLongestStreak);
-            Console.WriteLine(longestStreak);
-            //Console.WriteLine(myArray);
+            Console.WriteLine($"Mode: {valueOfLongestStreak}");
+            Console.WriteLine($"Occurrences of the mode: {longestStreak}");
         }
     }
 }
