@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C0CCCE03-C9D7-4D58-9F7C-5DB3535FE504}</ProjectGuid>
+    <ProjectGuid>{06DF4A88-F95E-421D-A22B-5F69B9B1A35B}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Ordgaater</RootNamespace>
     <AssemblyName>Ordgaater</AssemblyName>

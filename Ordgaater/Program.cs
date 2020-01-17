@@ -18,15 +18,16 @@ namespace Ordgaater
 
             foreach (var word in listOfWords)
             {
-                System.Console.WriteLine(word);
+                Console.WriteLine(word);
             }
+            Console.WriteLine(listOfWords.Length);
         }
 
         private static string[] GetListOfWords(string[] allLines)
         {
             List<string> wordsInDictionary = new List<String>();
             string previousWord = "zzzzzzzzz";
-            System.Console.WriteLine(allLines.Length);
+            Console.WriteLine(allLines.Length);
             for (var i = 0; i < allLines.Length; i++)
             {
                 string line = allLines[i];
@@ -34,7 +35,10 @@ namespace Ordgaater
                 string word = splitLine[1];
                 if (i > 0 && previousWord != word)
                 {
-                    wordsInDictionary.Add(splitLine[1]);
+                    if (word.Length > 6 && word.Length < 10 && !word.Contains("-"))
+                    {
+                        wordsInDictionary.Add(splitLine[1]);
+                    }
                     previousWord = word;
                 }
             }
