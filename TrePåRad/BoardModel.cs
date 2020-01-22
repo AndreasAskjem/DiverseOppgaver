@@ -4,9 +4,6 @@ namespace TrePåRad
 {
     public class BoardModel
     {
-        public int Height = 10;
-        public int Width = 20;
-
         public char[,] BoardState =
         {
             { ' ', ' ', ' ' },
@@ -69,7 +66,8 @@ namespace TrePåRad
 
         public char CheckIfWon()
         {
-            char winner = ' ';
+            var emptyFields = 0;
+            var winner = ' ';
             var b = BoardState;
             if (b[0, 0] == b[0, 1] && b[0, 0] == b[0, 2] || //┌────
                 b[0, 0] == b[1, 0] && b[0, 0] == b[2, 0])   //│
@@ -88,18 +86,19 @@ namespace TrePåRad
             {
                 winner = b[1, 1];
             }
-            else
+            if(winner == ' ')
             {
                 for (var i = 0; i < 3; i++)
                 {
                     for (var j = 0; j < 3; j++)
                     {
-                        if (winner == ' ')
+                        if (b[i, j] == ' ')
                         {
-                            winner = 't';
+                            emptyFields++;
                         }
                     }
                 }
+                if (emptyFields == 0) winner = 't';
             }
 
             return winner;

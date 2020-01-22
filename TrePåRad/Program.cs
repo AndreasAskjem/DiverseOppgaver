@@ -37,19 +37,19 @@ namespace TrePåRad
 
             if (winner == 'x')
             {
-                Console.WriteLine("You won! Play again? (y/n)");
+                Console.Write("You won! Play again? (y/n)");
                 var answer = Console.ReadLine();
                 if(answer=="y") StartNewGame();
             }
             else if (winner == 'o')
             {
-                Console.WriteLine("You lost! Play again? (y/n)");
+                Console.Write("You lost! Play again? (y/n)");
                 var answer = Console.ReadLine();
                 if (answer == "y") StartNewGame();
             }
             else if (winner == 't')
             {
-                Console.WriteLine("It's a tie! Play again? (y/n)");
+                Console.Write("It's a tie! Play again? (y/n)");
                 var answer = Console.ReadLine();
                 if (answer == "y") StartNewGame();
             }
@@ -57,12 +57,16 @@ namespace TrePåRad
 
         private static void Show(BoardModel game)
         {
+            for (var i = 0; i < 25; i++)
+            {
+                Console.WriteLine(); // Makes the board appear at the bottom every time.
+            }
             string[] board = {
                  "  a b c",
                  " ┌─────┐",
-                $"1│{game.BoardState[0,0]} {game.BoardState[0,1]} {game.BoardState[0,2]}│",
-                $"2│{game.BoardState[1,0]} {game.BoardState[1,1]} {game.BoardState[1,2]}│",
-                $"3│{game.BoardState[2,0]} {game.BoardState[2,1]} {game.BoardState[2,2]}│",
+                $"1│{game.BoardState[0,0]} {game.BoardState[1,0]} {game.BoardState[2,0]}│",
+                $"2│{game.BoardState[0,1]} {game.BoardState[1,1]} {game.BoardState[2,1]}│",
+                $"3│{game.BoardState[0,2]} {game.BoardState[1,2]} {game.BoardState[2,2]}│",
                  " └─────┘"
             };
             foreach (var line in board)
