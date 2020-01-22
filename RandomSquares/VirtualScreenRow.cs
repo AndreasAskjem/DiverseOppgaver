@@ -77,7 +77,6 @@ namespace RandomSquares
             {
                 Console.Write(cell.GetCharacter());
             }
-
             Console.WriteLine();
         }
     }

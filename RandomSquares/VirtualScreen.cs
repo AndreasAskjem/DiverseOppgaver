@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RandomSquares
 {
@@ -18,7 +14,27 @@ namespace RandomSquares
                 _rows[i] = new VirtualScreenRow(width);
             }
         }
-        public void Add(Box box) { }
-        public void Show() { }
+
+        public void Add(Box box)
+        {
+            //box.
+            foreach (var row in _rows)
+            {
+                for (var i = 0; i < box.Height - 2; i++)
+                {
+                    row.AddBoxTopRow(box.X, box.Width); // Need IFs
+                    row.AddBoxMiddleRow(box.X, box.Width);
+                    row.AddBoxBottomRow(box.X, box.Width);
+                }
+            }
+        }
+
+        public void Show()
+        {
+            foreach (var row in _rows)
+            {
+                row.Show();
+            }
+        }
     }
 }

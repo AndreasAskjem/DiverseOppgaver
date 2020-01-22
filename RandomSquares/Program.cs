@@ -36,7 +36,7 @@ namespace RandomSquares
 
         private static void Show(Box[] boxes)
         {
-            var screen = new VirtualScreen(_width, _height);
+            var screen = new VirtualScreen(_width,_height);
             foreach (var box in boxes)
             {
                 screen.Add(box);
