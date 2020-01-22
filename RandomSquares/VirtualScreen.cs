@@ -17,14 +17,21 @@ namespace RandomSquares
 
         public void Add(Box box)
         {
-            //box.
-            foreach (var row in _rows)
+            
+            for (var i = 0; i < _rows.Length; i++)
             {
-                for (var i = 0; i < box.Height - 2; i++)
+                var row = _rows[i];
+                if (i == box.StartY)
                 {
-                    row.AddBoxTopRow(box.X, box.Width); // Need IFs
-                    row.AddBoxMiddleRow(box.X, box.Width);
+                    row.AddBoxTopRow(box.X, box.Width);
+                }
+                else if (i == box.EndY)
+                {
                     row.AddBoxBottomRow(box.X, box.Width);
+                }
+                else if (i > box.StartY && i < box.EndY)
+                {
+                    row.AddBoxMiddleRow(box.X, box.Width);
                 }
             }
         }

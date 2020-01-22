@@ -15,9 +15,9 @@ namespace RandomSquares
         public Box(Random random, int maxX, int maxY)
         {
             Width = random.Next(_minimumSize, maxX);
-            Height = random.Next(_minimumSize, maxY);
-            X = random.Next(1, maxX - Width);
-            Y = random.Next(1, maxY - Height);
+            Height = random.Next(_minimumSize, maxY); //Subtract from 2nd values to add bottom/right border
+            X = random.Next(0, maxX - Width);
+            Y = random.Next(0, maxY - Height); // Add to 1st values to add top/left border
         }
     }
 }

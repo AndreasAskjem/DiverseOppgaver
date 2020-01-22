@@ -61,7 +61,7 @@
             {
                 return '├';
             }
-            if (Up && Down && Left && Right)
+            if (Up && Down && !Left && !Right)
             {
                 return '│';
             }
