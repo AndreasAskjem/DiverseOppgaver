@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace RandomSquares
+﻿namespace RandomSquares
 {
     public class VirtualScreen
     {

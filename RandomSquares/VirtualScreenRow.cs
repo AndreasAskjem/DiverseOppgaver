@@ -15,7 +15,6 @@ namespace RandomSquares
             }
         }
 
-
         public void AddBoxTopRow(int boxX, int boxWidth)
         {
             var screenWidth = _cells.Length;

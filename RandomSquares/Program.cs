@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 
 namespace RandomSquares
 {
@@ -14,6 +9,7 @@ namespace RandomSquares
 
         static void Main(string[] args)
         {
+            //Test();
             while (true)
             {
                 var boxes = CreateBoxes();
@@ -43,40 +39,7 @@ namespace RandomSquares
             }
             screen.Show();
         }
-    }
-    /*
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var cell = new VirtualScreenCell();
-            cell.AddLowerLeftCorner();
-            //cell.AddVertical();
 
-            var row = new VirtualScreenRow(10);
-
-            //var box = new Box();
-            
-           // row.AddBoxTopRow(1, 10);
-            //Console.WriteLine(row);
-
-            //Test();
-
-            RowTest();
-        }
-
-        private static void RowTest()
-        {
-            var row1 = new VirtualScreenRow(20);
-            var row2 = new VirtualScreenRow(20);
-            var row3 = new VirtualScreenRow(20);
-            row1.AddBoxTopRow(5, 3);
-            row2.AddBoxMiddleRow(4, 5);
-            row3.AddBoxBottomRow(3, 7);
-            row1.Show();
-            row2.Show();
-            row3.Show();
-        }
 
         private static void Test()
         {
@@ -84,7 +47,7 @@ namespace RandomSquares
             cell.AddHorizontal();
             Console.WriteLine("Expected: ─");
             Console.WriteLine($"Actual: {cell.GetCharacter()}");
-            
+
             cell = new VirtualScreenCell();
             cell.AddLowerLeftCorner();
             Console.WriteLine("Expected: └");
@@ -100,8 +63,6 @@ namespace RandomSquares
             cell.AddUpperRightCorner();
             Console.WriteLine("Expected: ┬");
             Console.WriteLine($"Actual: {cell.GetCharacter()}");
-
         }
     }
-    */
 }
