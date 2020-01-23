@@ -14,7 +14,7 @@ namespace RandomSquares
             {
                 var boxes = CreateBoxes();
                 var i = 0;
-                while (i < 40)
+                while (i < 21)
                 {
                     Show(boxes);
                     foreach (var box in boxes)
@@ -32,7 +32,7 @@ namespace RandomSquares
         private static Box[] CreateBoxes()
         {
             var random = new Random();
-            var boxes = new Box[1];
+            var boxes = new Box[3];
             for (var i = 0; i < boxes.Length; i++)
             {
                 boxes[i] = new Box(random, _width, _height);

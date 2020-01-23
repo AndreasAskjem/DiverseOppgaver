@@ -22,8 +22,16 @@ namespace RandomSquares
             X = random.Next(0, maxX - Width);
             Y = random.Next(0, maxY - Height); // Add to 1st values to add top/left border
 
-            SpeedX = random.Next(-1, 2);
-            SpeedY = random.Next(-1, 2);
+            SpeedX = random.Next(-1, 2)*2;
+
+            if (SpeedX != 0)
+            {
+                SpeedY = random.Next(-1, 2);
+            }
+            else
+            {
+                SpeedY = random.Next(0, 2) == 0 ? -1 : 1;
+            }
         }
 
         public void Move()
