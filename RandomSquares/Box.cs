@@ -10,10 +10,10 @@ namespace RandomSquares
         public int EndY => Y + Height;
         public int Width { get; }
         public int Height { get; }
-        private int _minimumSize = 3;
+        private readonly int _minimumSize = 3;
 
-        public int SpeedX;
-        public int SpeedY;
+        private readonly int _speedX;
+        private readonly int _speedY;
 
         public Box(Random random, int maxX, int maxY)
         {
@@ -22,22 +22,22 @@ namespace RandomSquares
             X = random.Next(0, maxX - Width);
             Y = random.Next(0, maxY - Height); // Add to 1st values to add top/left border
 
-            SpeedX = random.Next(-1, 2)*2;
+            _speedX = random.Next(-1, 2)*2;
 
-            if (SpeedX != 0)
+            if (_speedX != 0)
             {
-                SpeedY = random.Next(-1, 2);
+                _speedY = random.Next(-1, 2);
             }
             else
             {
-                SpeedY = random.Next(0, 2) == 0 ? -1 : 1;
+                _speedY = random.Next(0, 2) == 0 ? -1 : 1;
             }
         }
 
         public void Move()
         {
-            X += SpeedX;
-            Y += SpeedY;
+            X += _speedX;
+            Y += _speedY;
         }
     }
 }

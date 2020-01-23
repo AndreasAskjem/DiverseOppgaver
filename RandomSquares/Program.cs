@@ -47,6 +47,7 @@ namespace RandomSquares
             {
                 screen.Add(box);
             }
+
             screen.Show();
         }
 
