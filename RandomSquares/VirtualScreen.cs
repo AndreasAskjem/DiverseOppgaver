@@ -1,4 +1,6 @@
-﻿namespace RandomSquares
+﻿using System;
+
+namespace RandomSquares
 {
     public class VirtualScreen
     {
@@ -36,10 +38,14 @@
 
         public void Show()
         {
+            var screen = string.Empty;
             foreach (var row in _rows)
             {
-                row.Show();
+                screen += row.Show();
+                screen += "\n";
             }
+
+            Console.WriteLine(screen);
         }
     }
 }

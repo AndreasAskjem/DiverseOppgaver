@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace RandomSquares
+﻿namespace RandomSquares
 {
     public class VirtualScreenRow
     {
@@ -70,13 +68,15 @@ namespace RandomSquares
             }
         }
 
-        public void Show()
+        public string Show()
         {
+            var printedRow = string.Empty;
             foreach (var cell in _cells)
             {
-                Console.Write(cell.GetCharacter());
+                printedRow += cell.GetCharacter().ToString();
             }
-            Console.WriteLine();
+
+            return printedRow;
         }
     }
 }

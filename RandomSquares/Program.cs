@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace RandomSquares
 {
@@ -9,11 +10,20 @@ namespace RandomSquares
 
         static void Main(string[] args)
         {
-            //Test();
             while (true)
             {
                 var boxes = CreateBoxes();
-                Show(boxes);
+                var i = 0;
+                while (i < 40)
+                {
+                    Show(boxes);
+                    foreach (var box in boxes)
+                    {
+                        box.Move();
+                    }
+                    Thread.Sleep(200);
+                    i++;
+                }
                 Console.WriteLine("(press enter for new. ctrl+c=exit)");
                 Console.ReadLine();
             }
@@ -22,7 +32,7 @@ namespace RandomSquares
         private static Box[] CreateBoxes()
         {
             var random = new Random();
-            var boxes = new Box[3];
+            var boxes = new Box[1];
             for (var i = 0; i < boxes.Length; i++)
             {
                 boxes[i] = new Box(random, _width, _height);
@@ -40,7 +50,7 @@ namespace RandomSquares
             screen.Show();
         }
 
-
+        /*
         private static void Test()
         {
             var cell = new VirtualScreenCell();
@@ -64,5 +74,6 @@ namespace RandomSquares
             Console.WriteLine("Expected: ┬");
             Console.WriteLine($"Actual: {cell.GetCharacter()}");
         }
+        */
     }
 }
