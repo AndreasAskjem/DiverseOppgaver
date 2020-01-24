@@ -4,6 +4,8 @@ namespace Players
 {
     internal class Player
     {
+        public static readonly Random R = new Random();
+
         private string _name;
         private int _points;
 
@@ -15,7 +17,15 @@ namespace Players
 
         internal void Play(Player otherPlayer)
         {
-            throw new NotImplementedException();
+            var score = R.Next(2) == 1 ? 1 : -1;
+            _points += score;
+            otherPlayer._points -= score;
+            //Console.WriteLine(score);
+        }
+
+        internal void ShowNameAndPoints(Random random)
+        {
+            Console.WriteLine($"{_name}: {_points} points");
         }
     }
 }
