@@ -24,29 +24,22 @@ namespace Flaskeoppgave
             Content = Capacity;
         }
 
-        internal void Fill(int otherBottle)
+        internal void Fill(int otherBottleContent)
         {
-            Content += otherBottle;
-            Content = Content > Capacity ? Capacity : Content;
+            if (Content + otherBottleContent <= Capacity)
+            {
+                Content += otherBottleContent;
+            }
+
+            //Content = Content > Capacity ? Capacity : Content;
         }
 
         internal void FillToTop(Bottle otherBottle)
         {
-            if (Capacity - Content > otherBottle.Content) {return;}
+            if (Content + otherBottle.Content <= Capacity) return;
 
-            otherBottle.Content = Content + otherBottle.Content - Capacity;
+            otherBottle.Content -= (Capacity - Content);
             Content = Capacity;
-            Console.WriteLine();
-
-            /*
-            Content += otherBottle.Empty();
-
-            if (Content > Capacity)
-            {
-                otherBottle.Content = Content - Capacity;
-                Content = Capacity;
-            }
-            */
         }
     }
 }
