@@ -6,10 +6,10 @@ namespace Flaskeoppgave
     {
         static void Main(string[] args)
         {
-            var bottle1 = new Bottle(5);
-            var bottle2 = new Bottle(8);
+            var bottle1 = new Bottle(3);
+            var bottle2 = new Bottle(5);
             var wantedVolume = 4;
-            var numberOfOperations = 10;
+            var numberOfOperations = 6;
 
             TryWithGivenNumberOfOperations(numberOfOperations, bottle1, bottle2, wantedVolume);
 
@@ -28,6 +28,14 @@ namespace Flaskeoppgave
             while (true)
             {
                 DoOperations(operations, bottle1, bottle2);
+                /*foreach (var op in operations)
+                {
+                    Console.Write(op + ", ");
+                }
+
+                Console.WriteLine();
+                */
+
 
                 /*
                 var depth = 1;
@@ -38,7 +46,7 @@ namespace Flaskeoppgave
                 }
                 */
 
-                Console.WriteLine();
+                //Console.WriteLine();
 
                 var foundSolution = CheckIfSolvedAndExitApplicationIfSo(bottle1, bottle2, wantedVolume, operations);
                 if (foundSolution) break;
@@ -72,10 +80,13 @@ namespace Flaskeoppgave
             bottle1.Empty();
             bottle2.Empty();
             for (var i = 0; i < operations.Length; i++)
-            {
-                var operationNo = operations[i] - 1;
-                if(operationNo == -1) { return; }
-                
+            { 
+                var operationNo = operations[i]-1;
+                //Console.Write(operationNo + ", ");
+                //Console.WriteLine();
+                if (operationNo == -1) { return; }
+                //Console.WriteLine(operationNo);
+
                 if (operationNo == 0) bottle1.FillToTopFromTap();         // Fylle flaske 1 fra springen
                 else if (operationNo == 1) bottle2.FillToTopFromTap();    // Fylle flaske 2 fra springen
                 else if (operationNo == 2) bottle2.Fill(bottle1.Empty()); // Tømme flaske 1 i flaske 2 - 
