@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,26 +13,53 @@ namespace Startliste
     {
         static void Main(string[] args)
         {
-            var people = new List<string>();
+            var registrations = new List<Registration>();
+            var clubs = new List<Club>();
 
-            using (var file = new StreamReader("startlist.csv"))
+            using (var file = new StreamReader("startlist.csv", Encoding.UTF8))
             {
-                string data;
-                while ((data = file.ReadLine()) != null)
+                var line = file.ReadLine(); // Takes out the header line
+
+                while ((line = file.ReadLine()) != null)
                 {
-                    //List<string> lineElements = new List<string>();
+                    var person = new Registration(line);
 
-                    string[] lineElements = data.Split(',');
+                    /*
+                    var elements =  line.Split(',').Select(p => p.Trim('"')).ToList();
+                    var person = new Registration(elements[0], elements[1], elements[2], elements[3], elements[4], elements[5]);
+                    */
+                    
+                    registrations.Add(person);
 
-                    foreach (var element in lineElements)
+                    if (person.Club == "")
                     {
-                        Console.WriteLine(element);
+                        continue;
                     }
 
-                    var x = new Registration(lineElements);
+                    if (clubs.All(club => club.ClubName != person.Club))
+                    {
+                        clubs.Add(new Club(person.Club));
+                    }
 
-                    //Console.WriteLine(line);
+                    var index = clubs.FindIndex(c => c.ClubName == person.Club);
+                    clubs[index].AddMember(person);
                 }
+            }
+            WriteClubsWithMembers(clubs);
+        }
+
+
+        private static void WriteClubsWithMembers(List<Club> clubs)
+        {
+            foreach (var club in clubs)
+            {
+                Console.WriteLine(club.ClubName);
+
+                foreach (var person in club.Members)
+                {
+                    Console.WriteLine($"  {person.Name}, Class: {person.ClassName}");
+                }
+                Console.WriteLine();
             }
         }
     }
