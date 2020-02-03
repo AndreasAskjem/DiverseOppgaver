@@ -23,12 +23,6 @@ namespace Startliste
                 while ((line = file.ReadLine()) != null)
                 {
                     var person = new Registration(line);
-
-                    /*
-                    var elements =  line.Split(',').Select(p => p.Trim('"')).ToList();
-                    var person = new Registration(elements[0], elements[1], elements[2], elements[3], elements[4], elements[5]);
-                    */
-                    
                     registrations.Add(person);
 
                     if (person.Club == "")
