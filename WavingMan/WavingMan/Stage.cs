@@ -7,7 +7,7 @@ namespace WavingMan
     {
         private readonly Man[] _men = new Man[]
         {
-            new Man(5,5,-1,0), new Man(6,5,1,0),  new Man(5,6,0,1){IsLeftHanded = true}, 
+            new Man(5,5,-1,0), new Man(6,5,1,0),  new LeftHandedMan(4, 4, 1 ,1),
         };
 
         public void ShowAndMove()

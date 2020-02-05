@@ -6,8 +6,8 @@ namespace WavingMan
     {
         public Position Position { get; }
         public Position Speed { get; }
-        public bool IsLeftHanded { get; set; }
-        private bool _shouldWaveNextTime = false;
+        //public bool IsLeftHanded { get; set; }
+        protected bool ShouldWaveNextTime = false;
 
         public Man(int x, int y, int dx, int dy)
         {
@@ -16,24 +16,26 @@ namespace WavingMan
             Speed = new Position(dx, dy);
         }
 
-        public void Show()
+        public virtual void Show()
         {
             SetCursorTop();
             SetCursorLeft();
-            Console.WriteLine(_shouldWaveNextTime ? (IsLeftHanded ? "\\o " : " o/") : " o");
+            Console.WriteLine(ShouldWaveNextTime ? " o/" : " o");
+            //Console.WriteLine(_shouldWaveNextTime ? (IsLeftHanded ? "\\o " : " o/") : " o");
             SetCursorLeft();
-            Console.WriteLine(_shouldWaveNextTime ? (IsLeftHanded ? " |\\ " : "/|") : " |");
+            Console.WriteLine(ShouldWaveNextTime ? " |" : " |\\ ");
+            //Console.WriteLine(_shouldWaveNextTime ? (IsLeftHanded ? " |\\ " : "/|") : " |");
             SetCursorLeft();
             Console.Write("/ \\");
-            _shouldWaveNextTime = !_shouldWaveNextTime;
+            ShouldWaveNextTime = !ShouldWaveNextTime;
         }
 
-        private void SetCursorTop()
+        protected void SetCursorTop()
         {
             Console.CursorTop = Math.Max(Position.Y, 0);
         }
 
-        private void SetCursorLeft()
+        protected void SetCursorLeft()
         {
             Console.CursorLeft = Math.Max(Position.X - 1, 0);
         }
@@ -44,9 +46,9 @@ namespace WavingMan
             var windowHeight = Console.WindowHeight;
 
             if (Position.X <= 1) Speed.X = 1;
-            if (Position.X >= windowWidth - 1) Speed.X = -1;
+            if (Position.X >= windowWidth - 3) Speed.X = -1;
             if (Position.Y <= 1) Speed.Y = 1;
-            if (Position.Y >= windowHeight - 1) Speed.Y = -1;
+            if (Position.Y >= windowHeight - 3) Speed.Y = -1;
 
             Position.Move(Speed);
         }
