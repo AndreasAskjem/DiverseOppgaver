@@ -24,11 +24,11 @@ namespace AbaxOppgave
 
         public override void ShowData()
         {
-            Console.WriteLine($"Reg. Nr.: {RegistrationNumber}kw");
+            Console.WriteLine($"Reg. Nr.: {RegistrationNumber}");
             Console.WriteLine($"Effekt: {Effect}kw");
             Console.WriteLine($"Maksfart: {Speed}km/t");
-            Console.WriteLine($"Farge: {Color}km/t");
-            Console.WriteLine($"Type: {Type}km/t");
+            Console.WriteLine($"Farge: {Color}");
+            Console.WriteLine($"Type: {Type}");
         }
 
         public override void Start()
