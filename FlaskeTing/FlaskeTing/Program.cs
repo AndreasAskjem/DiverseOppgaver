@@ -9,7 +9,7 @@ namespace FlaskeTing
 {
     class Program
     {
-        private static string[] operationNames = new[]
+        private static string[] operationNames =
         {
             "Fylle flaske 1 fra springen",
             "Fylle flaske 2 fra springen",
@@ -25,9 +25,9 @@ namespace FlaskeTing
         {
             var bottle1 = new Bottle(5);
             var bottle2 = new Bottle(7);
-            var wantedVolume = 1;
+            var wantedVolume = 3;
 
-            var numberOfOperations = 1;
+            var numberOfOperations = 3;
             while (true)
             {
                 var isSolved = TryWithGivenNumberOfOperations(numberOfOperations, bottle1, bottle2, wantedVolume);
@@ -60,9 +60,16 @@ namespace FlaskeTing
             int wantedVolume, int[] operations)
         {
             if (bottle1.Content != wantedVolume
-             && bottle2.Content != wantedVolume
-             && bottle1.Content + bottle2.Content != wantedVolume)
+                && bottle2.Content != wantedVolume
+                && bottle1.Content + bottle2.Content != wantedVolume)
+            {
                 return false;
+            }
+
+            foreach (var operation in operations)
+            {
+                Console.WriteLine(operation);
+            }
             for (var i = 0; i < operations.Length; i++)
             {
                 var operation = operations[i];

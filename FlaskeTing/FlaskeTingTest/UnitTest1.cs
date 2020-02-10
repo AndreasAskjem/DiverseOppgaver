@@ -9,6 +9,7 @@ namespace FlaskeTingTest
         [TestMethod]
         public void TestMethod1()
         {
+
         }
     }
 }
