@@ -4,7 +4,7 @@ namespace AbaxOppgave
 {
     internal class Car : Vehicle
     {
-        protected string RegistrationNumber { get; }
+        public string RegistrationNumber { get; }
         protected int Speed { get; }
         protected int Effect { get; }
         protected string Color { get; }

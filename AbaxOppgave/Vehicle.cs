@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Runtime.InteropServices;
+//using System.Runtime.InteropServices;
 
 namespace AbaxOppgave
 {
@@ -13,7 +13,7 @@ namespace AbaxOppgave
 
         public abstract void Start();
 
-        public void options()
+        public void Options()
         {
             Console.WriteLine("Hva vil du gjøre?");
             var input = Console.ReadLine();

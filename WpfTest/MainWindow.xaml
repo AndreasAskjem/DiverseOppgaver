@@ -1,0 +1,17 @@
+﻿<Window x:Name="My_super_awesome_thign" x:Class="WpfTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfTest"
+        mc:Ignorable="d"
+        Title="Awesome Thing" Height="450" Width="800">
+    <Grid>
+        <Button Content="Button" Margin="653,33,24,0" VerticalAlignment="Top" Click="Button_Click" Height="20"/>
+        <Label x:Name="CountLabel" Content="Du har trykket 0 ganger!" HorizontalAlignment="Left" Margin="645,86,0,0" VerticalAlignment="Top" Height="26" Width="139"/>
+        <Canvas Margin="0,0,200,0">
+            <Rectangle x:Name="MovableSquare" Height="100" Width="100" Canvas.Left="10" Canvas.Top="10" Stroke="Black" />
+        </Canvas>
+
+    </Grid>
+</Window>
