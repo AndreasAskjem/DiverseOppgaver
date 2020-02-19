@@ -10,7 +10,7 @@
         <Button Content="Go Crazy!" Margin="653,132,24,0" VerticalAlignment="Top" Click="Button_Click" Height="20"/>
         <Label x:Name="CountLabel" Content="You have clicked 0 times!" HorizontalAlignment="Left" Margin="645,157,0,0" VerticalAlignment="Top" Height="26" Width="139"/>
         <Canvas Margin="0,0,200,0">
-            <Rectangle x:Name="MovableSquare" Height="100" Width="100" Canvas.Left="10" Canvas.Top="10" Stroke="Black" />
+            <Rectangle x:Name="MovableSquare" Height="100" Width="100" Canvas.Left="10" Canvas.Bottom="0"  Stroke="Black" Fill="Green" />
         </Canvas>
         <TextBox x:Name="Input" HorizontalAlignment="Left" Margin="656,91,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Write a number:" HorizontalAlignment="Left" Margin="668,65,0,0" VerticalAlignment="Top"/>

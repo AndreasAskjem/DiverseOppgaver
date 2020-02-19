@@ -23,7 +23,8 @@ namespace WpfTest
     public partial class MainWindow : Window
     {
         private int _count = 0;
-        private double move = 20;
+        private double move = 5;
+        private int direction = 1;
         private int numberOfMoves { get; set; }
 
         public MainWindow()
@@ -37,7 +38,7 @@ namespace WpfTest
             _count++;
             CountLabel.Content = $"You have clicked {_count} times!";
 
-            await Animation(60);
+            await Animation(100);
         }
 
         public async Task Animation(int fps)
@@ -55,9 +56,10 @@ namespace WpfTest
             var i = 0;
             while (i<repetitions)
             {
-                MoveSquare();
 
-                MovableSquare.SetValue(Canvas.TopProperty, (double)MovableSquare.GetValue(Canvas.TopProperty) + move);
+                MovableSquare.SetValue(Canvas.BottomProperty, (double)MovableSquare.GetValue(Canvas.BottomProperty) + move*direction);
+
+                MoveSquare();
 
                 await Task.Delay(1000 / fps);
                 i++;
@@ -66,13 +68,10 @@ namespace WpfTest
 
         public void MoveSquare()
         {
-            if ((double)MovableSquare.GetValue(Canvas.TopProperty) > 300d)
+            if ((double)MovableSquare.GetValue(Canvas.BottomProperty) >= 314d ||
+                (double)MovableSquare.GetValue(Canvas.BottomProperty) + move < 1d)
             {
-                move = -20d;
-            }
-            if ((double)MovableSquare.GetValue(Canvas.TopProperty) < 20d)
-            {
-                move = 20d;
+                direction = -direction;
             }
         }
     }
