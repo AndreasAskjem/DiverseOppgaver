@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -23,48 +24,56 @@ namespace WpfTest
     {
         private int _count = 0;
         private double move = 20;
+        private int numberOfMoves { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
+            numberOfMoves = 5;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             _count++;
-            CountLabel.Content = $"Du har trykket {_count} ganger!";
-            var value = MovableSquare.GetValue(Canvas.BottomProperty);
-            /*
-            var i = 0;
-            while (i < 100)
-            {
-                i++;
-            }
-            */
-            Animation(100);
+            CountLabel.Content = $"You have clicked {_count} times!";
+
+            await Animation(60);
         }
 
-        private void Animation(int fps)
+        public async Task Animation(int fps)
         {
-            var i = 0;
-            while (i<1)
+            int repetitions;
+            try
             {
+                repetitions = int.Parse(Input.Text);
+            }
+            catch
+            {
+                Input.Text = "";
+                return;
+            }
+            var i = 0;
+            while (i<repetitions)
+            {
+                MoveSquare();
+
                 MovableSquare.SetValue(Canvas.TopProperty, (double)MovableSquare.GetValue(Canvas.TopProperty) + move);
-                if ((double)MovableSquare.GetValue(Canvas.TopProperty) > 300d)
-                {
-                    move = -20d;
-                }
-                else if ((double)MovableSquare.GetValue(Canvas.TopProperty) < 20d)
-                {
-                    move = 20d;
-                }
 
-
-
-                Thread.Sleep(1000/fps);
+                await Task.Delay(1000 / fps);
                 i++;
             }
         }
 
+        public void MoveSquare()
+        {
+            if ((double)MovableSquare.GetValue(Canvas.TopProperty) > 300d)
+            {
+                move = -20d;
+            }
+            if ((double)MovableSquare.GetValue(Canvas.TopProperty) < 20d)
+            {
+                move = 20d;
+            }
+        }
     }
 }
